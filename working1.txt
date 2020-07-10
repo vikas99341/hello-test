@@ -1,0 +1,15 @@
+import xlwings as xw
+wc = xw.Book(r'C:\Users\kuvikas\Desktop\TA_Input.csv')
+sheet = wc.sheets['TA_Input']
+value_TA_Input=sheet.range('J10').value
+
+wd = xw.Book(r'C:\Users\kuvikas\Desktop\Output - Skylon - A1.1 - TowerDB - Germany - Release4.2 Feb20_20200327.xlsb')
+sheet = wd.sheets['TowerDB']
+value_TowerDB=sheet.range('H17').value
+
+we = xw.Book(r'C:\Users\kuvikas\Desktop\FI_DE91_IC_202005.xlsm')
+sheet = we.sheets['MJUT']
+
+sheet.range('A5').value=value_TowerDB
+sheet.range('C6').value=value_TA_Input
+we.save(r'C:\Users\kuvikas\Desktop\FI_DE91_IC_202006.xlsm')
